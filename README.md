@@ -1,12 +1,12 @@
 # Yellow Extension ishow
 
-Version 1.3 (requires YELLOW 0.8.4 or higher)
+Version 1.3.5 (requires YELLOW 0.8.4 or higher)
 
 CSS image slider for Yellow with no need of libraries.
 
 ## The Idea Behind
 
-Often web page presenter require huge script libraries for a few moving images. »ishow« achieves this with a fraction of code, without libraries, saving bandwidth and increasing speed. I can be done by CSS.
+Often web page presenter require huge script libraries for a few moving images. »ishow« achieves this with a fraction of code, without libraries, saving bandwidth and increasing speed primarily using CSS.
 
 ## How do I Install This?
 
@@ -20,7 +20,7 @@ To uninstall simply delete the [extension files](https://github.com/BsNoSi/yello
 
 → You can only use one "ishow" per page.
 
-`[ishow images display swipe show path]`
+`[ishow images display swipe show path frame]`
 
 The arguments
 
@@ -38,7 +38,7 @@ The arguments
 
 1. **show** (default): Images appear and disappear centered
 
-2.  **left** : Images slide from right to left.
+2. **left** : Images slide from right to left.
 
 3. **right** :  Images slide from left to rihgt
 
@@ -52,8 +52,7 @@ The arguments
 
 8. **fly** : Images fly left in right out.
 
-> All shows are running in an infinite loop. 
->
+> All shows are running in an infinite loop. Depending on the height of the first image all following are centered horizontally and vertically in the available area. Although this compensates differences in size, they should be small for a homogeneous presentation.
 
 **path**, optional, default "" : The path for further details on click. The default results in »no links«. Linking and mous pointer change is realized with some applied javascript, which means: no javascript available → no links, no pointer change. 
 
@@ -63,6 +62,14 @@ The arguments
 The path is completed with the file name of the image, except extender (`/media/image/fortheshow/highlights.png` → `/path/highlight`)
 
 > **Make sure that targets are valid.** Otherwise, Yellow will create it's standard »Oh no!« not found message. See *How to organize links* below.
+
+**frame**, optional, default "" : The extension contains a "standard frame definition"
+
+~~~css
+border: solid rgb(230,230,230) 1px; border-radius:6px;
+~~~
+
+that can be activated by an "x" as parameter. You can modify the frame to your preference. Be aware, that in this case the extension needs a forced update, overwriting your changes.
 
 ### Examples
 
@@ -78,9 +85,9 @@ The path is completed with the file name of the image, except extender (`/media/
 
 - Flys in and out each png image file available in `root/media/images/company/` every 2 seconds with 0.4 seconds "fly time". Clicking an image leads to `current path/divisions/image file name`
 
-`[ishow company/]`
+`[ishow company/ - - - - x]`
 
-- Show any image file available in `/media/images/company/` every 4 seconds with 1 second blending time. No interaction on click.
+- Show any image file available in `/media/images/company/` every 4 seconds with 1 second blending time. No interaction on click. The presentation has a frame.
 
 ## How to organize links
 
@@ -121,6 +128,3 @@ You can easily add effects. Copy a `case → break;` code block and try yourself
 ## Developer
 
 [Norbert Simon](https://nosi.de/)
-
-
-
