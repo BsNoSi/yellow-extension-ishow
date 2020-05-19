@@ -4,6 +4,11 @@ Version 1.3.5 (requires YELLOW 0.8.4 or higher)
 
 CSS image slider for Yellow with no need of libraries.
 
+# NOTE
+
+**Because of changes in YELLOW CMS core this extension does not run with current version (>0.8). To solve this I have to wait for a final desicion of the core developer.**
+
+
 ## The Idea Behind
 
 Often web page presenter require huge script libraries for a few moving images. »ishow« achieves this with a fraction of code, without libraries, saving bandwidth and increasing speed primarily using CSS.
