@@ -1,21 +1,17 @@
 # Yellow Extension ishow
 
-Version 1.3.5 (requires YELLOW 0.8.4 or higher)
+> Tested with Yellow 0.8.15
 
-CSS image slider for Yellow with no need of libraries.
+Version 1.4.0
 
-# NOTE (2020-10-14)
-
-**Because of changes in YELLOW CMS core this extension requires modification of YELLOW `core.php`.**
-
-`onClick` has to be added to  `$attributesHtml` in `core.php`
-
+CSS image slider for Yellow with no need of libraries, with optional link to pages.
 
 ## The Idea Behind
 
-Often web page presenter require huge script libraries for a few moving images. »ishow« achieves this with a fraction of code, without libraries, saving bandwidth and increasing speed primarily using CSS.
+Instead of huge libraries for *simply pushing images* this extension only uses CSS. This saves bandwidth because only a fraction of code is required.
 
-## How do I Install This?
+
+## Install
 
 1. Download and install [Datenstrom Yellow CMS](https://github.com/datenstrom/yellow/).
 2. Download [ishow extension](https://github.com/BsNoSi/yellow-extension-ishow/archive/master.zip). If you are using Safari, right click and select 'Download file as'.
@@ -23,52 +19,64 @@ Often web page presenter require huge script libraries for a few moving images. 
 
 To uninstall simply delete the [extension files](https://github.com/BsNoSi/yellow-extension-ishow/blob/master/extension.ini).
 
-## Using the ishow extension
+## Usage
 
-→ You can only use one "ishow" per page.
+**Limitation**: You can use only one "ishow" per page.
+
+**Requries**: An entry `ishow:` in header area, *if linking shall be supported*.
+
+```
+---
+title: …
+…
+ishow: yes | 1 | … – the entry as such is required
+…
+```
+This entry adds the required Javascript to the page.
+
+Available parameters:
 
 `[ishow images display swipe show path frame]`
 
-The arguments
 
-**images**, *required* : The folder of the displayed images. Use a filter i.e. `.*svg` to show *all* SVG-files in this path. `images` starts at `./media/image/`
+**images**
+: *required* : The folder of the displayed images. Use a filter i.e. `.*svg` to show *all* SVG-files in this path. `images` starts at `./media/image/`
 
 > **The first image defines the height dimension of the presentation.** Therefore, the "highest" should be the first in the queue. To get a good looking presentation, images should have a similar sizing.
 
-**display**, *optional, default 4sec* : The display time of a single image.
+**display**
+: *optional, default 4sec* : The display time of a single image.
 
-**swipe**, *optional, default 1 sec* : The blending time between two images.
+**swipe**
+: *optional, default 1 sec* : The blending time between two images.
 
 > `swipe` has high impact to attraction of presentation. Good values are fractions of a second, for instance »0.5«. To fast can destroy the effect, to slow can make it boring.
 
-**show**, *optional, default "show" :* The type of show:
+**show**
+: *optional, default is "show", available:
 
-1. **show** (default): Images appear and disappear centered
-
-2. **left** : Images slide from right to left.
-
-3. **right** :  Images slide from left to rihgt
-
-4. **up** : Images slide from button to top
-
-5. **down** : Images slide from top to bottom
-
-6. **pump** : Images grow and shrink centered.
-
-7. **zoom** : Images zoom in and out centered.
-
-8. **fly** : Images fly left in right out.
+- **show** (default): Images appear and disappear centered
+-  **left** : Images slide from right to left.
+- **right** :  Images slide from left to rihgt
+- **up** : Images slide from button to top
+- **down** : Images slide from top to bottom
+- **pump** : Images grow and shrink centered.
+- **zoom** : Images zoom in and out centered.
+- **fly** : Images fly left in right out.
 
 > All shows are running in an infinite loop. Depending on the height of the first image all following are centered horizontally and vertically in the available area. Although this compensates differences in size, they should be small for a homogeneous presentation.
 
-**path**, optional, default "" : The path for further details on click. The default results in »no links«. Linking and mous pointer change is realized with some applied javascript, which means: no javascript available → no links, no pointer change. 
+**path**
+: optional, default  is "". A given path adds a linkt to every image of the show to a page in this path with the name of the clicked image.
+
+> Linking is applied with  javascript. If no Javascript available the cursor nevertheless chances to pointer. If that bothers you – let me know.
 
 - `/path/` Clicking an image leads to `root/path/image-name`. 
 - `path/` Clicking an images leads to `current document path/path/`. 
 
 The path is completed with the file name of the image, except extender (`/media/image/fortheshow/highlights.png` → `/path/highlight`)
 
-> **Make sure that targets are valid.** Otherwise, Yellow will create it's standard »Oh no!« not found message. See *How to organize links* below.
+> **Make sure that targets are valid.** Otherwise, Yellow will create it's standard »Oh no!« message. See *How to organize links* below.
 
 **frame**, optional, default "" : The extension contains a "standard frame definition"
 
@@ -76,9 +84,11 @@ The path is completed with the file name of the image, except extender (`/media/
 border: solid rgb(230,230,230) 1px; border-radius:6px;
 ~~~
 
-that can be activated by an "x" as parameter. You can modify the frame to your preference. Be aware, that in this case the extension needs a forced update, overwriting your changes.
+that can be activated by an "x" as parameter. You may modify the frame to your preference. Be aware, that in this case the extension needs a forced update, overwriting your changes.
 
 ### Examples
+
+> Demos of all available shows are available here [https://buoa.de/wiki/showtime#ret] with a list. It is a German speaking page but to see the demos you can simply go down the list to open a demo and it's parameters.
 
 `[ishow company/.*svg 3 0.3 show /divisions/]`
 
@@ -132,6 +142,16 @@ Just a moment please…
 
 You can easily add effects. Copy a `case → break;` code block and try yourself. If you have found an impressing motion effect place it here as an [issue](https://github.com/BsNoSi/yellow-extension-ishow/issues). I will implement it in the standard code, to make »ishow« *update save* for you.
 
+## History:
+
+2020-10-15: Update to catch disfunction because of API-changes of Yellow.
+
+2019-12-20: Initial (published) release.
+
+
 ## Developer
 
 [Norbert Simon](https://nosi.de/)
+
+
+
