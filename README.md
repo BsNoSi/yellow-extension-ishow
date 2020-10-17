@@ -1,14 +1,14 @@
 # Yellow Extension ishow
 
-> Tested with Yellow 0.8.15
+Version 1.4.1
 
-Version 1.4.0
+> Tested with core version 0.8.23
 
-CSS image slider for Yellow with no need of libraries, with optional link to pages.
+## Application
 
-## The Idea Behind
+CSS image slider with optional link to pages. 
 
-Instead of huge libraries for *simply pushing images* this extension only uses CSS. This saves bandwidth because only a fraction of code is required.
+Instead of huge libraries for *simply pushing images* this extension only uses CSS for this to saves bandwidth because only a fraction of code is required. For support of optional links (in this case) a small Script is added to the page.
 
 
 ## Install
@@ -34,61 +34,47 @@ ishow: yes | 1 | … – the entry as such is required
 ```
 This entry adds the required Javascript to the page.
 
-Available parameters:
 
-`[ishow images display swipe show path frame]`
+     [ishow "images" "display" "swipe" "show" "path" "frame"]
 
+| Parameter | Function |
+| :---: | :--- |
+| images | *required* : The folder of the displayed images.<br/>Use a filter i.e. `.*svg` to show *all* SVG-files in this path.<br/> `images` has to be relative to coreImageDir.<br/>**The first image defines the height dimension of the presentation.**<br/> Therefore, the "highest" should be the first in the queue. To get a good looking presentation, images should have a similar sizing. |
+| display | *optional, default 4sec* : The display time of a single image. Can be a fraction of seconds like `1.5`. |
+| swipe | *optional, default 1 sec* : The blending time between two images.<br/>`swipe` has high impact to attraction of presentation. Good values are fractions of a second, for instance »0.5«. To fast can destroy the effect, to slow can make it boring. |
+| show | *optional*, default is "show", see available show types below |
+| path | *optional*, default  is "".<br/>A given path adds a link to every image of the show to a page in this path with the name of the clicked image. |
+| frame | *optional*, default "".<br/>Content as such is not releavant, can be anything, preferably an "x".<br/>The extension contains a "standard frame definition"<br/>`border: solid rgb(230,230,230) 1px; border-radius:6px;`|
 
-**images**
-: *required* : The folder of the displayed images. Use a filter i.e. `.*svg` to show *all* SVG-files in this path. `images` starts at `./media/image/`
+### Available show types
 
-> **The first image defines the height dimension of the presentation.** Therefore, the "highest" should be the first in the queue. To get a good looking presentation, images should have a similar sizing.
-
-**display**
-: *optional, default 4sec* : The display time of a single image.
-
-**swipe**
-: *optional, default 1 sec* : The blending time between two images.
-
-> `swipe` has high impact to attraction of presentation. Good values are fractions of a second, for instance »0.5«. To fast can destroy the effect, to slow can make it boring.
-
-**show**
-: *optional, default is "show", available:
-
-- **show** (default): Images appear and disappear centered
--  **left** : Images slide from right to left.
-- **right** :  Images slide from left to rihgt
-- **up** : Images slide from button to top
-- **down** : Images slide from top to bottom
-- **pump** : Images grow and shrink centered.
-- **zoom** : Images zoom in and out centered.
-- **fly** : Images fly left in right out.
+| Parameter | Effect |
+| :---: | :--- |
+| show | (default): Images appear and disappear centered |
+|left | Images slide from right to left. |
+| right |Images slide from left to rihgt |
+| up | Images slide from button to top |
+| down | Images slide from top to bottom |
+| pump | Images grow and shrink centered. |
+| zoom | Images zoom in and out centered. |
+| fly | Images fly left in right out. |
 
 > All shows are running in an infinite loop. Depending on the height of the first image all following are centered horizontally and vertically in the available area. Although this compensates differences in size, they should be small for a homogeneous presentation.
 
-**path**
-: optional, default  is "". A given path adds a linkt to every image of the show to a page in this path with the name of the clicked image.
+### Link Targets
 
-> Linking is applied with  javascript. If no Javascript available the cursor nevertheless chances to pointer. If that bothers you – let me know.
+Linking is applied with  Javascript. If no Javascript is available, the cursor nevertheless chances to pointer style. If that bothers you – let me know.
 
-- `/path/` Clicking an image leads to `root/path/image-name`. 
-- `path/` Clicking an images leads to `current document path/path/`. 
+- `/path/` Clicking an image leads to `root/path/image-file-name`. 
+- `path/` Clicking an images leads to `{current document path}/path/image-file-name`. 
 
-The path is completed with the file name of the image, except extender (`/media/image/fortheshow/highlights.png` → `/path/highlight`)
+`image-file-name` is execpt extender: `/media/image/fortheshow/highlights.png` → `/path/highlight`
 
 > **Make sure that targets are valid.** Otherwise, Yellow will create it's standard »Oh no!« message. See *How to organize links* below.
 
-**frame**, optional, default "" : The extension contains a "standard frame definition"
-
-~~~css
-border: solid rgb(230,230,230) 1px; border-radius:6px;
-~~~
-
-that can be activated by an "x" as parameter. You may modify the frame to your preference. Be aware, that in this case the extension needs a forced update, overwriting your changes.
-
 ### Examples
 
-> Demos of all available shows are available here [https://buoa.de/wiki/showtime#ret] with a list. It is a German speaking page but to see the demos you can simply go down the list to open a demo and it's parameters.
+> Running demos of all available shows are available here [https://buoa.de/wiki/showtime#ret] with a list. It is a German speaking page but to see the demos you can simply go down the list to open a demo and it's parameters.
 
 `[ishow company/.*svg 3 0.3 show /divisions/]`
 
@@ -143,6 +129,8 @@ Just a moment please…
 You can easily add effects. Copy a `case → break;` code block and try yourself. If you have found an impressing motion effect place it here as an [issue](https://github.com/BsNoSi/yellow-extension-ishow/issues). I will implement it in the standard code, to make »ishow« *update save* for you.
 
 ## History:
+
+2020-10-17: API changes applied.
 
 2020-10-15: Update to catch disfunction because of API-changes of Yellow.
 
