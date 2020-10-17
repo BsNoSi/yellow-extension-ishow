@@ -6,7 +6,7 @@
 // requires YELLOW 0.8.4 or higher
 
 class YellowIshow {
-   const VERSION = "1.4.0";
+   const VERSION = "1.4.1";
    
    public $yellow; //access to API
    // Handle initialisation
@@ -19,7 +19,7 @@ class YellowIshow {
       if ($name == "ishow" && ($type == "block" || $type == "inline")) {
          //		  if (empty($text) {} else …
 
-         list($pattern, $duration, $swipe, $dtype, $dlink, $drim) = $this->yellow->toolbox->getTextArgs($text);
+         list($pattern, $duration, $swipe, $dtype, $dlink, $drim) = $this->yellow->toolbox->getTextArguments($text);
          if (empty($pattern)) {
             $files = $this->yellow->files->clean();
          } else {
