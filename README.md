@@ -68,7 +68,7 @@ Linking is applied with  Javascript. If no Javascript is available, the cursor n
 - `/path/` Clicking an image leads to `root/path/image-file-name`. 
 - `path/` Clicking an images leads to `{current document path}/path/image-file-name`. 
 
-`image-file-name` is execpt extender: `/media/image/fortheshow/highlights.png` → `/path/highlight`
+`image-file-name` is except extender: `/media/image/fortheshow/highlights.png` → `/path/highlight`
 
 > **Make sure that targets are valid.** Otherwise, Yellow will create it's standard »Oh no!« message. See *How to organize links* below.
 
