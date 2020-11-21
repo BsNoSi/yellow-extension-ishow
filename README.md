@@ -1,8 +1,8 @@
 # Yellow Extension ishow
 
-Version 1.4.1
+Version 1.4.2
 
-> Tested with core version 0.8.23
+> Tested with Version 0.8.33 / Release 0.8.16 of Yellow
 
 ## Application
 
@@ -129,6 +129,8 @@ Just a moment please…
 You can easily add effects. Copy a `case → break;` code block and try yourself. If you have found an impressing motion effect place it here as an [issue](https://github.com/BsNoSi/yellow-extension-ishow/issues). I will implement it in the standard code, to make »ishow« *update save* for you.
 
 ## History:
+
+2020-11-21: Alignment to install changes
 
 2020-10-17: API changes applied.
 
